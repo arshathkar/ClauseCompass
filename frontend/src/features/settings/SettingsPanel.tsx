@@ -2,7 +2,6 @@ import * as Dialog from '@radix-ui/react-dialog';
 import * as Switch from '@radix-ui/react-switch';
 import { useTranslation } from 'react-i18next';
 import { useSettingsStore } from '../../stores/settingsStore';
-import { useSessionStore } from '../../stores/sessionStore';
 import { ThemeSwitcher } from '../../components';
 
 interface SettingsPanelProps {
@@ -13,7 +12,6 @@ interface SettingsPanelProps {
 export function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
   const { t } = useTranslation();
   const settings = useSettingsStore();
-  const { clearSession } = useSessionStore();
 
   const handleDyslexiaChange = (checked: boolean) => {
     settings.updateSettings({ dyslexiaFont: checked });

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ModeBadge, EscalationBanner, SeverityBadge, CitationChip } from '../../components';
-import { SettingsPanel } from '../settings/SettingsPanel';
+import { EscalationBanner, SeverityBadge, CitationChip } from '../../components';
 import { ClauseDetail } from './ClauseDetail';
 import { AskPage } from './AskPage';
 import { ComparePage } from './ComparePage';
