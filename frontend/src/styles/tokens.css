@@ -1,0 +1,77 @@
+:root {
+  /* Default (Light) Theme */
+  --color-bg: #FFFFFF;
+  --color-text: #111827;
+  --color-text-muted: #4B5563;
+  --color-brand: #4F46E5; /* Vibrant Indigo-600 */
+  --color-focus: #6366F1;
+  --color-border: #9CA3AF;
+  
+  --color-badge-high-bg: #FEF2F2;
+  --color-badge-high-text: #B91C1C;
+  --color-badge-medium-bg: #FFFBEB;
+  --color-badge-medium-text: #92400E;
+  --color-badge-low-bg: #F0FDF4;
+  --color-badge-low-text: #166534;
+  --color-badge-info-bg: #F3F4F6;
+  --color-badge-info-text: #374151;
+
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-dyslexia: 'Atkinson Hyperlegible', sans-serif;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0B1220;
+  --color-text: #F3F4F6;
+  --color-text-muted: #9CA3AF;
+  --color-brand: #93C5FD;
+  --color-focus: #93C5FD;
+  --color-border: #6B7280;
+  
+  --color-badge-high-bg: #450A0A;
+  --color-badge-high-text: #FCA5A5;
+  --color-badge-medium-bg: #422006;
+  --color-badge-medium-text: #FCD34D;
+  --color-badge-low-bg: #052E16;
+  --color-badge-low-text: #86EFAC;
+  --color-badge-info-bg: #1F2937;
+  --color-badge-info-text: #D1D5DB;
+}
+
+[data-theme="high-contrast"] {
+  --color-bg: #000000;
+  --color-text: #FFFFFF;
+  --color-text-muted: #FFFFFF;
+  --color-brand: #FFFF00;
+  --color-focus: #00FFFF;
+  --color-border: #FFFFFF;
+  
+  --color-badge-high-bg: #000000;
+  --color-badge-high-text: #FFFF00;
+  --color-badge-medium-bg: #000000;
+  --color-badge-medium-text: #FFFF00;
+  --color-badge-low-bg: #000000;
+  --color-badge-low-text: #FFFF00;
+  --color-badge-info-bg: #000000;
+  --color-badge-info-text: #FFFF00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="high-contrast"]):not([data-theme="dark"]) {
+    --color-bg: #0B1220;
+    --color-text: #F3F4F6;
+    --color-text-muted: #9CA3AF;
+    --color-brand: #93C5FD;
+    --color-focus: #93C5FD;
+    --color-border: #6B7280;
+    
+    --color-badge-high-bg: #450A0A;
+    --color-badge-high-text: #FCA5A5;
+    --color-badge-medium-bg: #422006;
+    --color-badge-medium-text: #FCD34D;
+    --color-badge-low-bg: #052E16;
+    --color-badge-low-text: #86EFAC;
+    --color-badge-info-bg: #1F2937;
+    --color-badge-info-text: #D1D5DB;
+  }
+}

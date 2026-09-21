@@ -1,0 +1,98 @@
+version: 1
+rules:
+  - id: R-TERM-01
+    category: termination_unilateral
+    doc_types: [rental, employment, freelance, service, loan]
+    severity: high
+    any:
+      - '(?is)\b(may|can|shall be entitled to)\s+terminate\b.{0,80}?\b(at any time|without (prior )?notice|without (assigning )?(any )?reason)'
+    unless:
+      - '(?is)\b(either|both) part(y|ies)\b.{0,60}\bterminate'
+    explain: "One side can end the agreement at any time or without notice."
+
+  - id: R-RENEW-01
+    category: auto_renewal
+    doc_types: [rental, service, insurance, tos]
+    severity: medium
+    any:
+      - '(?is)\b(automatically|auto[- ]?)\s*(renew|extend)'
+      - '(?is)\bshall\s+(renew|extend)\s+automatically'
+    explain: "The agreement renews by itself unless you act in time."
+
+  - id: R-NONCOMP-01
+    category: non_compete
+    doc_types: [employment, freelance, service]
+    severity: high
+    any:
+      - '(?is)\bnon[- ]?compete\b'
+      - '(?is)\bshall not\b.{0,60}\b(engage|be engaged|work|compete)\b.{0,80}\b(after|following|for a period)'
+    explain: "Limits where you can work after this agreement ends."
+    law_pack_refs: [LP-ICA-S27]
+
+  - id: R-DEPOSIT-01
+    category: deposit_forfeiture
+    doc_types: [rental]
+    severity: high
+    any:
+      - '(?is)\b(security\s+)?deposit\b.{0,160}\b(forfeit|non[- ]?refundable|deduct|withh?old)'
+    unless:
+      - '(?is)\bwithin\s+\d+\s+(working\s+)?days\b.{0,80}\brefund'
+    explain: "The deposit can be kept or reduced, and refund rules may be unclear."
+
+  - id: R-PENALTY-01
+    category: penalty
+    doc_types: [rental, employment, freelance, service, loan, insurance]
+    severity: high
+    any:
+      - '(?is)\b(liquidated damages|penalty|penal (interest|charges?))\b'
+    explain: "A fixed charge applies if you break a rule; check the amount."
+
+  - id: R-LOCKIN-01
+    category: lock_in
+    doc_types: [rental, employment, service, loan]
+    severity: high
+    any:
+      - '(?is)\block[- ]?in\b'
+      - '(?is)\bminimum\s+(period|term)\s+of\b'
+    explain: "You may not be able to leave early without paying."
+
+  - id: R-AMEND-01
+    category: unilateral_amendment
+    doc_types: [rental, employment, freelance, service, loan, tos, insurance]
+    severity: high
+    any:
+      - '(?is)\b(reserves? the right|may)\s+(to\s+)?(modify|amend|change|revise)\b.{0,80}\b(at any time|without (prior )?(notice|consent))'
+    explain: "The other side can change the terms without your agreement."
+
+  - id: R-ARB-01
+    category: dispute_resolution
+    doc_types: [rental, employment, freelance, service, loan, nda, insurance]
+    severity: medium
+    any:
+      - '(?is)\barbitrat(ion|or)\b.{0,120}\b(seat|venue|place)\b'
+      - '(?is)\bexclusive jurisdiction\b'
+    explain: "Disputes must be handled in a specific place or way, which may be costly."
+
+  - id: R-IP-01
+    category: ip_assignment
+    doc_types: [employment, freelance, service]
+    severity: high
+    any:
+      - '(?is)\b(assigns?|transfers?)\b.{0,80}\b(all|any)\b.{0,40}\b(intellectual property|inventions?|work product)\b'
+    explain: "You hand over ownership of what you create, possibly beyond this job."
+
+  - id: R-INDEM-01
+    category: indemnity
+    doc_types: [rental, employment, freelance, service, loan, nda, insurance, tos]
+    severity: high
+    any:
+      - '(?is)\bindemnif(y|ies|ication)\b'
+    explain: "You promise to cover the other side's losses."
+
+  - id: R-BOND-01
+    category: service_bond
+    doc_types: [employment]
+    severity: high
+    any:
+      - '(?is)\b(service (bond|agreement)|minimum (service|tenure))\b.{0,120}\b(pay|reimburse|recover)'
+    explain: "Leaving before a set period can cost you money."

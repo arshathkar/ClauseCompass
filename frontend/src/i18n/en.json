@@ -1,0 +1,66 @@
+{
+  "welcome": {
+    "scope": "Understand what you're signing — grounded in your document, private by default, accessible to everyone.",
+    "freeNotice": "This tool uses free AI models. Your data is not kept.",
+    "understand": "I understand",
+    "trySample": "Try a sample",
+    "continue": "Continue"
+  },
+  "upload": {
+    "drop": "Drop your file here, or click to choose",
+    "paste": "Or paste text here",
+    "docType": "Document type",
+    "role": "Your role",
+    "language": "Output language",
+    "readingLevel": "Reading level",
+    "continue": "Continue to redaction"
+  },
+  "redaction": {
+    "title": "Step 2 of 3 · Check what we hide",
+    "summary": "We found {{count}} personal details and hid them before anything is sent to the AI.",
+    "type": "Type",
+    "found": "Found in your text",
+    "sentAs": "Sent to the AI as",
+    "hide": "Hide?",
+    "addCustom": "Add a word or name to hide",
+    "add": "Add",
+    "residualRisk": "Names and addresses are not always detected. Add them here.",
+    "back": "Back",
+    "continue": "Continue to analysis"
+  },
+  "results": {
+    "overview": "Overview",
+    "risks": "Risks",
+    "ask": "Ask",
+    "compare": "Compare",
+    "actions": "Actions",
+    "keyFacts": "Key facts",
+    "summary": "Summary",
+    "obligations": "Obligations",
+    "urgent": "Time-sensitive"
+  },
+  "clause": {
+    "whatItSays": "What it says",
+    "whatItMeans": "What it means for you",
+    "whyItMatters": "Why it matters",
+    "question": "Question to ask",
+    "wrong": "This looks wrong"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "fontSize": "Font size",
+    "lineSpacing": "Line spacing",
+    "dyslexia": "Dyslexia-friendly font",
+    "reducedMotion": "Reduced motion",
+    "delete": "Delete everything now",
+    "save": "Save"
+  },
+  "common": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "info": "Info",
+    "close": "Close"
+  }
+}

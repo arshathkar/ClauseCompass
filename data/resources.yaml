@@ -1,0 +1,59 @@
+version: 1
+last_reviewed: "2026-09-20"
+
+resources:
+  - id: RES-NALSA
+    name: "National Legal Services Authority (NALSA)"
+    type: legal_aid
+    url: "https://nalsa.gov.in/"
+    description: "Free legal aid for eligible citizens under the Legal Services Authorities Act, 1987."
+    last_reviewed: "2026-09-20"
+
+  - id: RES-DLSA
+    name: "District Legal Services Authority"
+    type: legal_aid
+    url: "https://nalsa.gov.in/lsams/"
+    description: "District-level free legal aid. Find your local authority on the NALSA website."
+    last_reviewed: "2026-09-20"
+
+  - id: RES-NCDRC
+    name: "National Consumer Disputes Redressal Commission"
+    type: consumer_forum
+    url: "https://ncdrc.nic.in/"
+    description: "File consumer complaints for goods and services disputes."
+    last_reviewed: "2026-09-20"
+
+  - id: RES-EDAAKHIL
+    name: "E-Daakhil (Online Consumer Complaint Portal)"
+    type: consumer_forum
+    url: "https://edaakhil.nic.in/"
+    description: "File consumer complaints online without visiting the commission."
+    last_reviewed: "2026-09-20"
+
+  - id: RES-RERA
+    name: "Real Estate Regulatory Authority (RERA)"
+    type: regulator
+    url: "https://rera.gov.in/"
+    description: "File complaints about real estate builders and projects. Each state has its own RERA portal."
+    last_reviewed: "2026-09-20"
+
+  - id: RES-RBI-BO
+    name: "RBI Integrated Ombudsman"
+    type: regulator
+    url: "https://cms.rbi.org.in/"
+    description: "Complaints against banks, NBFCs, and payment system operators."
+    last_reviewed: "2026-09-20"
+
+  - id: RES-IGMS
+    name: "IRDAI Integrated Grievance Management System"
+    type: regulator
+    url: "https://igms.irda.gov.in/"
+    description: "Insurance-related complaints and grievances."
+    last_reviewed: "2026-09-20"
+
+  - id: RES-TELE-DESK
+    name: "Tele-Law (Free Legal Advice)"
+    type: legal_aid
+    url: "https://tele-law.in/"
+    description: "Free legal advice via video call from Common Service Centres across India."
+    last_reviewed: "2026-09-20"

@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-size: var(--font-size, 100%);
+    line-height: var(--line-spacing, 1.5);
+    letter-spacing: var(--letter-spacing, normal);
+  }
+
+  [data-dyslexia="true"] {
+    --font-sans: var(--font-dyslexia);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] ::before,
+[data-reduced-motion="true"] ::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media print {
+  body {
+    color: black !important;
+    background: white !important;
+  }
+}

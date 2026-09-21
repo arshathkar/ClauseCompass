@@ -1,0 +1,10 @@
+{
+  "task": "doc_type",
+  "prompt_version": "doc-type@1.0",
+  "classifications": {
+    "rental_v1": {"doc_type": "rental", "confidence": 0.95},
+    "rental_v2": {"doc_type": "rental", "confidence": 0.95},
+    "offer_letter": {"doc_type": "employment", "confidence": 0.94},
+    "loan_agreement": {"doc_type": "loan", "confidence": 0.96}
+  }
+}

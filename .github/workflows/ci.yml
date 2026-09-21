@@ -1,0 +1,103 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - name: Lint
+        run: python -m ruff check . && python -m ruff format --check .
+      - name: Type check
+        run: python -m mypy --strict app
+      - name: Unit & integration tests
+        run: python -m pytest --cov=app --cov-fail-under=80 -q
+      - name: Eval smoke
+        run: python ../scripts/run_evals.py --mode replay --smoke
+      - name: Traceability
+        run: python ../scripts/check_traceability.py
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Type check
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm run test -- --run --coverage
+      - name: Build
+        run: npm run build
+      - name: Bundle size
+        run: node ../scripts/check-bundle-size.mjs
+      - name: Contrast check
+        run: python ../scripts/check_contrast.py
+
+  e2e-a11y:
+    needs: [backend, frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: pip install -e "backend[dev]"
+      - run: cd frontend && npm ci && npx playwright install --with-deps chromium
+      - name: Start backend (replay mode)
+        run: |
+          cd backend
+          LLM_MODE=replay python -m uvicorn app.main:app --port 8000 &
+          sleep 3
+      - name: Build frontend
+        run: cd frontend && npm run build
+      - name: E2E + accessibility tests
+        run: cd frontend && npx playwright test
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e "backend[dev]" pip-audit bandit
+      - name: pip-audit
+        run: pip-audit
+      - name: bandit
+        run: bandit -r backend/app -q
+      - name: npm audit
+        run: cd frontend && npm ci && npm audit --audit-level=high
+
+  repo-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/check_repo_size.sh

@@ -1,0 +1,42 @@
+version: 1
+doc_type: rental
+items:
+  - id: CK-RENT-01
+    clause: "Security deposit refund timeline"
+    why_it_matters: "Without a clear refund timeline, you may wait indefinitely to get your deposit back."
+    source_note: "Model Tenancy Act 2021, Section 8(4) recommends refund within one month."
+
+  - id: CK-RENT-02
+    clause: "Maintenance and repairs responsibility"
+    why_it_matters: "If not stated, disputes about who pays for repairs are common."
+    source_note: "Common in standard rental agreements; Model Tenancy Act Section 14."
+
+  - id: CK-RENT-03
+    clause: "Lock-in period terms"
+    why_it_matters: "A lock-in period limits your ability to leave early without penalty."
+    source_note: "Common practice in Indian rental agreements."
+
+  - id: CK-RENT-04
+    clause: "Notice period for termination"
+    why_it_matters: "You need to know how much advance notice to give before leaving."
+    source_note: "Standard clause; Model Tenancy Act Section 21."
+
+  - id: CK-RENT-05
+    clause: "Registration and stamp duty"
+    why_it_matters: "An unregistered agreement may not be admissible as evidence in court."
+    source_note: "Registration Act 1908, Section 17; varies by state."
+
+  - id: CK-RENT-06
+    clause: "Rent escalation terms"
+    why_it_matters: "Without clarity, rent increases can be arbitrary."
+    source_note: "Common practice; some state rent acts cap escalation at 10% per year."
+
+  - id: CK-RENT-07
+    clause: "Permitted use of premises"
+    why_it_matters: "Using the property for purposes not allowed may lead to termination."
+    source_note: "Standard lease clause."
+
+  - id: CK-RENT-08
+    clause: "Subletting rights"
+    why_it_matters: "If not addressed, subletting disputes can arise."
+    source_note: "Model Tenancy Act Section 15 generally prohibits subletting without written consent."

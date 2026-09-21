@@ -1,0 +1,44 @@
+patterns:
+  CARD:
+    regex: '\b(?:\d[ -]?){13,19}\b'
+    validator: luhn
+    priority: 1
+  AADHAAR:
+    regex: '\b[2-9]\d{3}[ -]?\d{4}[ -]?\d{4}\b'
+    validator: verhoeff
+    priority: 2
+  PAN:
+    regex: '\b[A-Z]{3}[ABCFGHLJPT][A-Z]\d{4}[A-Z]\b'
+    priority: 3
+  PASSPORT:
+    regex: '\b[A-PR-WY][1-9]\d\s?\d{4}[1-9]\b'
+    priority: 4
+  VOTER_ID:
+    regex: '\b[A-Z]{3}\d{7}\b'
+    priority: 5
+  IFSC:
+    regex: '\b[A-Z]{4}0[A-Z0-9]{6}\b'
+    priority: 6
+  ACCOUNT:
+    regex: '(?i)(?:a/?c|account)\s*(?:no\.?|number)?\s*[:\-]?\s*(\d{9,18})\b'
+    group: 1
+    needs_context: true
+    priority: 7
+  EMAIL:
+    regex: '[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}'
+    priority: 8
+  UPI:
+    regex: '\b[\w.\-]{2,256}@[a-z]{2,64}\b(?!\.)'
+    run_after: EMAIL
+    priority: 9
+  PHONE:
+    regex: '(?<!\d)(?:(?:\+|00)?91[ -]?|0)?[6-9]\d{4}[ -]?\d{5}(?!\d)'
+    priority: 10
+  DOB:
+    regex: '(?i)(?:dob|date of birth|born on)\s*[:\-]?\s*(\d{1,2}[/-]\d{1,2}[/-]\d{2,4})'
+    group: 1
+    priority: 11
+  GSTIN:
+    regex: '\b\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]\b'
+    optional: true
+    priority: 12

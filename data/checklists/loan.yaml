@@ -1,0 +1,27 @@
+version: 1
+doc_type: loan
+items:
+  - id: CK-LOAN-01
+    clause: "Interest rate type and reset terms"
+    why_it_matters: "Variable rates can increase your EMI significantly."
+    source_note: "RBI guidelines on transparency in lending."
+
+  - id: CK-LOAN-02
+    clause: "Prepayment and foreclosure charges"
+    why_it_matters: "RBI has prohibited foreclosure charges on floating-rate loans for individuals."
+    source_note: "RBI circular DNBR.CC.PD.No.085/03.10.01/2014-15."
+
+  - id: CK-LOAN-03
+    clause: "Penalty for late payment"
+    why_it_matters: "Penal interest can compound and become a significant burden."
+    source_note: "RBI Fair Practices Code; RBI 2023 circular on penal charges."
+
+  - id: CK-LOAN-04
+    clause: "Loan recall and acceleration terms"
+    why_it_matters: "The lender may demand full repayment immediately if you miss payments."
+    source_note: "Standard loan agreement clause."
+
+  - id: CK-LOAN-05
+    clause: "Data sharing and consent for credit bureaus"
+    why_it_matters: "Your loan data may be shared with credit bureaus and third parties."
+    source_note: "Credit Information Companies (Regulation) Act, 2005."

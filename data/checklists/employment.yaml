@@ -1,0 +1,32 @@
+version: 1
+doc_type: employment
+items:
+  - id: CK-EMP-01
+    clause: "Probation period and confirmation terms"
+    why_it_matters: "During probation, you may have fewer protections and shorter notice periods."
+    source_note: "Standard employment practice in India."
+
+  - id: CK-EMP-02
+    clause: "Notice period for resignation and termination"
+    why_it_matters: "Asymmetric notice periods mean one side has more flexibility than the other."
+    source_note: "Standard clause; check for symmetry."
+
+  - id: CK-EMP-03
+    clause: "Non-compete restrictions after leaving"
+    why_it_matters: "Post-employment non-compete clauses are generally void under Indian Contract Act Section 27."
+    source_note: "Indian Contract Act 1872, Section 27."
+
+  - id: CK-EMP-04
+    clause: "IP and invention assignment scope"
+    why_it_matters: "Broad IP clauses may cover personal projects or pre-existing work."
+    source_note: "Standard in tech employment contracts."
+
+  - id: CK-EMP-05
+    clause: "Variable pay and bonus terms"
+    why_it_matters: "If discretionary, the employer can reduce or withhold variable pay without recourse."
+    source_note: "Common employment clause."
+
+  - id: CK-EMP-06
+    clause: "Gratuity eligibility"
+    why_it_matters: "Gratuity is a statutory right after 5 years of service under the Payment of Gratuity Act."
+    source_note: "Payment of Gratuity Act, 1972."

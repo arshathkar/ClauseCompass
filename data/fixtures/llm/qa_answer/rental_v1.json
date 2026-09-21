@@ -1,0 +1,55 @@
+{
+  "task": "qa_answer",
+  "prompt_version": "qa-answer@1.0",
+  "queries": {
+    "how much is the deposit": {
+      "segments": [
+        {
+          "text": "The security deposit is ₹75,000 (Rupees Seventy-Five Thousand Only), which equals 3 months of rent.",
+          "citations": [
+            {"clause_id": "c-009", "quote": "deposited with the Licensor a sum of Rs. 75,000/- (Rupees Seventy-Five Thousand Only) as Security Deposit, equivalent to 3 (Three) months' Licence Fee"}
+          ]
+        }
+      ],
+      "is_abstention": false
+    },
+    "what is the monthly rent": {
+      "segments": [
+        {
+          "text": "The monthly rent (licence fee) is ₹25,000, payable by the 5th of each month.",
+          "citations": [
+            {"clause_id": "c-003", "quote": "a monthly licence fee of Rs. 25,000/- (Rupees Twenty-Five Thousand Only) payable on or before the 5th day of each calendar month"}
+          ]
+        }
+      ],
+      "is_abstention": false
+    },
+    "what is the lock in period": {
+      "segments": [
+        {
+          "text": "The lock-in period is 6 months from the start of the agreement. During this time, you cannot terminate the agreement.",
+          "citations": [
+            {"clause_id": "c-006", "quote": "the first 6 months of the Agreement shall constitute a lock-in period during which the Licensee shall not be entitled to terminate this Agreement"}
+          ]
+        },
+        {
+          "text": "If you leave during the lock-in, you must pay 3 months' rent as penalty and lose the entire security deposit.",
+          "citations": [
+            {"clause_id": "c-006", "quote": "the Licensee shall be liable to pay a penalty equivalent to 3 (Three) months' Licence Fee, and the Security Deposit shall be forfeited in its entirety"}
+          ]
+        }
+      ],
+      "is_abstention": false
+    },
+    "is the property insured": {
+      "segments": [],
+      "is_abstention": true,
+      "abstention_reason": "The document does not mention property insurance.",
+      "suggested_questions": [
+        "Who is responsible for major repairs?",
+        "What happens if the property is damaged?",
+        "What are the maintenance responsibilities?"
+      ]
+    }
+  }
+}

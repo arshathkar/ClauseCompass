@@ -1,0 +1,85 @@
+{
+  "doc": "rental_v1.md",
+  "doc_type": "rental",
+  "user_role": "tenant",
+  "labels": [
+    {
+      "locator": { "number": "4.1" },
+      "category": "termination_unilateral",
+      "severity": "high",
+      "expected_quote_contains": "terminate this Agreement at any time without assigning any reason"
+    },
+    {
+      "locator": { "number": "5.2" },
+      "category": "deposit_forfeiture",
+      "severity": "high",
+      "expected_quote_contains": "sole discretion to determine the amount of such deductions"
+    },
+    {
+      "locator": { "number": "3.4" },
+      "category": "lock_in",
+      "severity": "high",
+      "expected_quote_contains": "Security Deposit shall be forfeited in its entirety"
+    },
+    {
+      "locator": { "number": "3.2" },
+      "category": "auto_renewal",
+      "severity": "medium",
+      "expected_quote_contains": "automatically renew"
+    },
+    {
+      "locator": { "number": "11.1" },
+      "category": "unilateral_amendment",
+      "severity": "high",
+      "expected_quote_contains": "modify the terms of this Agreement at any time without prior notice"
+    },
+    {
+      "locator": { "number": "9.1" },
+      "category": "indemnity",
+      "severity": "high",
+      "expected_quote_contains": "indemnify and hold harmless"
+    },
+    {
+      "locator": { "number": "2.2" },
+      "category": "penalty",
+      "severity": "high",
+      "expected_quote_contains": "penal interest at the rate of 2% per month"
+    },
+    {
+      "locator": { "number": "10.2" },
+      "category": "dispute_resolution",
+      "severity": "medium",
+      "expected_quote_contains": "exclusive jurisdiction of the courts in Delhi"
+    }
+  ],
+  "answerable_questions": [
+    { "q": "How much is the deposit?", "expected_clause": "5.1" },
+    { "q": "What is the monthly rent?", "expected_clause": "2.1" },
+    { "q": "What is the lock-in period?", "expected_clause": "3.3" },
+    { "q": "How much notice does the tenant need to give?", "expected_clause": "4.2" },
+    { "q": "Can the landlord terminate without reason?", "expected_clause": "4.1" }
+  ],
+  "unanswerable_questions": [
+    "What is the landlord's PAN number?",
+    "Is the property insured?",
+    "What are the parking arrangements?",
+    "Has the property been inspected recently?"
+  ],
+  "inconsistencies": [
+    {
+      "clauses": ["4.1", "12.1"],
+      "type": "notice_period",
+      "description": "Clause 4.1 says 30 days notice, but Clause 12.1 says 60 days for any action."
+    }
+  ],
+  "pii_canaries": [
+    "2345 6789 0123",
+    "3456 7890 1234",
+    "ABCPS1234K",
+    "BNCPN5678L",
+    "+91 98765 43210",
+    "meera@example.com",
+    "1234567890123456",
+    "SBIN0001234"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task": "key_facts",
+  "prompt_version": "key-facts@1.0",
+  "model": "replay",
+  "result": {
+    "title": "Leave and Licence Agreement",
+    "parties": [
+      {"name": "Licensor", "description": "Mr. Rajesh Kumar Sharma — property owner"},
+      {"name": "Licensee", "description": "Ms. Meera Nair — tenant"}
+    ],
+    "key_dates": [
+      {"label": "Start date", "value": "1 September 2026"},
+      {"label": "End date", "value": "31 July 2027"},
+      {"label": "Lock-in period", "value": "6 months from start"}
+    ],
+    "money": [
+      {"label": "Monthly rent", "value": "₹25,000"},
+      {"label": "Security deposit", "value": "₹75,000 (3 months' rent)"},
+      {"label": "Lock-in penalty", "value": "3 months' rent + full deposit forfeiture"},
+      {"label": "Late payment interest", "value": "2% per month"}
+    ],
+    "obligations": [
+      {"party": "Licensee", "obligation": "Pay rent by the 5th of each month"},
+      {"party": "Licensee", "obligation": "Maintain premises, handle minor repairs up to ₹5,000"},
+      {"party": "Licensee", "obligation": "Pay all utility and maintenance charges"},
+      {"party": "Licensee", "obligation": "Use premises for residential purposes only"},
+      {"party": "Licensor", "obligation": "Handle major repairs and structural maintenance"}
+    ],
+    "notice_periods": [
+      {"who": "Licensor", "period": "30 days", "clause": "4.1"},
+      {"who": "Licensee", "period": "60 days (after lock-in)", "clause": "4.2"}
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+[project]
+name = "clausecompass-backend"
+version = "0.1.0"
+description = "ClauseCompass backend - legal document analysis"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "pydantic[email]",
+    "pydantic-settings",
+    "uvicorn[standard]",
+    "httpx",
+    "rank-bm25",
+    "rapidfuzz",
+    "cachetools",
+    "slowapi",
+    "pyyaml"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "hypothesis",
+    "respx",
+    "ruff",
+    "mypy"
+]
+
+[tool.mypy]
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

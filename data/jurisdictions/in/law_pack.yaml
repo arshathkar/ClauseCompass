@@ -1,0 +1,67 @@
+version: 1
+last_reviewed: "2026-09-20"
+
+entries:
+  - id: LP-ICA-S27
+    act: Indian Contract Act, 1872
+    section: "Section 27"
+    plain_summary: "Every agreement that restrains anyone from carrying on a lawful profession, trade, or business is void to that extent. A non-compete clause may not be enforceable after the agreement ends."
+    source_url: "https://www.indiacode.nic.in/show-data?actid=AC_CEN_3_20_00002_187209_1523340333624"
+    last_reviewed: "2026-09-20"
+
+  - id: LP-ICA-S73
+    act: Indian Contract Act, 1872
+    section: "Section 73"
+    plain_summary: "When a contract is broken, the injured party can claim compensation for loss or damage caused — but only what naturally arose from the breach or what the parties knew about when they made the contract."
+    source_url: "https://www.indiacode.nic.in/show-data?actid=AC_CEN_3_20_00002_187209_1523340333624"
+    last_reviewed: "2026-09-20"
+
+  - id: LP-ICA-S74
+    act: Indian Contract Act, 1872
+    section: "Section 74"
+    plain_summary: "If a contract names a sum to be paid for a breach (liquidated damages or penalty), the injured party can claim reasonable compensation up to that amount — not necessarily the full amount named."
+    source_url: "https://www.indiacode.nic.in/show-data?actid=AC_CEN_3_20_00002_187209_1523340333624"
+    last_reviewed: "2026-09-20"
+
+  - id: LP-CPA-S2-46
+    act: Consumer Protection Act, 2019
+    section: "Section 2(46) — Unfair contract"
+    plain_summary: "A contract is unfair if it demands excessive security deposits, imposes disproportionate penalties, refuses to accept early repayment, permits unilateral termination without equal right, or imposes unreasonable charges for a breach."
+    source_url: "https://www.indiacode.nic.in/handle/123456789/15256"
+    last_reviewed: "2026-09-20"
+
+  - id: LP-ARB-S7
+    act: Arbitration and Conciliation Act, 1996
+    section: "Section 7"
+    plain_summary: "An arbitration agreement must be in writing. It can be a clause in a contract or a separate agreement. Both parties must have agreed to resolve disputes through arbitration."
+    source_url: "https://www.indiacode.nic.in/handle/123456789/1978"
+    last_reviewed: "2026-09-20"
+
+  - id: LP-DPDP-S6
+    act: Digital Personal Data Protection Act, 2023
+    section: "Section 6 — Consent"
+    plain_summary: "Personal data can only be processed for a lawful purpose after obtaining free, specific, informed, unconditional, and unambiguous consent. Consent must be limited to the data necessary for the stated purpose."
+    source_url: "https://www.meity.gov.in/static/digitalIndia/DPDP_Act_2023.pdf"
+    last_reviewed: "2026-09-20"
+
+  - id: LP-IT-S43A
+    act: Information Technology Act, 2000
+    section: "Section 43A"
+    plain_summary: "Any body corporate that handles sensitive personal data must implement reasonable security practices. If negligence causes wrongful loss, they must compensate the affected person."
+    source_url: "https://www.indiacode.nic.in/handle/123456789/1999"
+    last_reviewed: "2026-09-20"
+
+  - id: LP-REG-S17
+    act: Registration Act, 1908
+    section: "Section 17"
+    plain_summary: "Certain documents must be registered — including leases of more than one year, and documents that transfer or create rights in immovable property worth more than one hundred rupees."
+    source_url: "https://www.indiacode.nic.in/handle/123456789/2323"
+    last_reviewed: "2026-09-20"
+
+  - id: LP-MTA-S4
+    act: Model Tenancy Act, 2021
+    section: "Section 4"
+    plain_summary: "Every tenancy must have a written agreement. The agreement should specify rent, security deposit (capped at two months' rent for residential premises), term, and other essential terms."
+    source_url: "https://mohua.gov.in/cms/Model-Tenancy-Act.php"
+    last_reviewed: "2026-09-20"
+    notes: "Model act — states may adopt with modifications."

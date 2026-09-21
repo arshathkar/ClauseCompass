@@ -1,0 +1,113 @@
+{
+  "task": "clause_analysis",
+  "prompt_version": "clause-analysis@1.3",
+  "model": "replay",
+  "result": {
+    "findings": [
+      {
+        "clause_id": "c-008",
+        "category": "termination_unilateral",
+        "severity": "high",
+        "what_it_says": "The Licensor may terminate this Agreement at any time without assigning any reason by giving 30 days' written notice to the Licensee.",
+        "what_it_means": "The landlord can end your rental at any time for any reason, but you cannot do the same — you need to wait until the lock-in period is over and give 60 days' notice.",
+        "why_it_matters": "This is a one-sided clause. You could be asked to leave on short notice without any reason, even if you have been paying rent regularly.",
+        "question_to_ask": "Can we make termination rights equal for both sides — same notice period, same conditions?",
+        "citations": [
+          {"clause_id": "c-008", "quote": "The Licensor may terminate this Agreement at any time without assigning any reason by giving 30 days' written notice"}
+        ],
+        "confidence": 0.95
+      },
+      {
+        "clause_id": "c-010",
+        "category": "deposit_forfeiture",
+        "severity": "high",
+        "what_it_says": "The Licensor may deduct from the Security Deposit any amounts due. The Licensor shall have sole discretion to determine the amount of such deductions and the decision of the Licensor shall be final and binding.",
+        "what_it_means": "The landlord alone decides how much to deduct from your deposit, and you have no right to challenge that decision.",
+        "why_it_matters": "Without an independent check, the landlord could make excessive deductions. There is also no timeline for returning the remaining deposit.",
+        "question_to_ask": "Can we add a joint inspection at move-out and a fixed refund timeline (for example, 30 days)?",
+        "citations": [
+          {"clause_id": "c-010", "quote": "The Licensor shall have sole discretion to determine the amount of such deductions and the decision of the Licensor shall be final and binding"}
+        ],
+        "confidence": 0.93
+      },
+      {
+        "clause_id": "c-006",
+        "category": "lock_in",
+        "severity": "high",
+        "what_it_says": "The first 6 months shall constitute a lock-in period. If the Licensee terminates during lock-in, a penalty of 3 months' rent applies and the deposit is forfeited entirely.",
+        "what_it_means": "You cannot leave in the first 6 months. If you do, you lose your entire ₹75,000 deposit plus pay an additional ₹75,000 penalty — a total of ₹1,50,000.",
+        "why_it_matters": "This is a significant financial risk. If your circumstances change (job transfer, family emergency), you face a steep penalty.",
+        "question_to_ask": "Can the penalty be reduced to 1 month's rent, and can we keep the deposit refundable even during the lock-in period?",
+        "citations": [
+          {"clause_id": "c-006", "quote": "the Licensee shall be liable to pay a penalty equivalent to 3 (Three) months' Licence Fee, and the Security Deposit shall be forfeited in its entirety"}
+        ],
+        "confidence": 0.94
+      },
+      {
+        "clause_id": "c-005",
+        "category": "auto_renewal",
+        "severity": "medium",
+        "what_it_says": "This Agreement shall automatically renew for successive periods of 11 months with a 5% escalation, unless either Party gives 30 days' notice of non-renewal.",
+        "what_it_means": "The agreement keeps renewing on its own with a 5% rent increase each time. You need to actively opt out 30 days before expiry.",
+        "why_it_matters": "If you forget to send the notice, you are committed for another 11 months at a higher rent.",
+        "question_to_ask": "Can the renewal be by mutual written agreement instead of automatic?",
+        "citations": [
+          {"clause_id": "c-005", "quote": "shall automatically renew for successive periods of 11 months each, with a 5% escalation"}
+        ],
+        "confidence": 0.92
+      },
+      {
+        "clause_id": "c-018",
+        "category": "unilateral_amendment",
+        "severity": "high",
+        "what_it_says": "The Licensor reserves the right to modify the terms of this Agreement at any time without prior notice.",
+        "what_it_means": "The landlord can change any rule in the agreement — including rent, maintenance duties, or use restrictions — without telling you first.",
+        "why_it_matters": "This makes the entire agreement uncertain. Any term you negotiated can be changed unilaterally.",
+        "question_to_ask": "Can we require that any changes need written agreement from both parties?",
+        "citations": [
+          {"clause_id": "c-018", "quote": "reserves the right to modify the terms of this Agreement at any time without prior notice"}
+        ],
+        "confidence": 0.96
+      },
+      {
+        "clause_id": "c-015",
+        "category": "indemnity",
+        "severity": "high",
+        "what_it_says": "The Licensee shall indemnify and hold harmless the Licensor against all claims, losses, damages, costs, and expenses arising from the Licensee's use of the Premises or breach of this Agreement.",
+        "what_it_means": "You are responsible for covering the landlord's losses — not just from your mistakes, but from your normal use of the property.",
+        "why_it_matters": "The word 'use' is very broad. If a guest slips in the corridor or a pipe bursts due to building age, you might be asked to pay.",
+        "question_to_ask": "Can the indemnity be limited to losses caused by your negligence or breach, not normal use?",
+        "citations": [
+          {"clause_id": "c-015", "quote": "indemnify and hold harmless the Licensor against all claims, losses, damages, costs, and expenses arising from the Licensee's use of the Premises"}
+        ],
+        "confidence": 0.91
+      },
+      {
+        "clause_id": "c-017",
+        "category": "dispute_resolution",
+        "severity": "medium",
+        "what_it_says": "Any dispute shall be subject to the exclusive jurisdiction of the courts in Delhi.",
+        "what_it_means": "If there is a dispute, you must go to court in Delhi — even though the property is in Bangalore and both parties may be in Bangalore.",
+        "why_it_matters": "Traveling to Delhi for a court case is expensive and inconvenient. This effectively makes it harder for you to enforce your rights.",
+        "question_to_ask": "Can the jurisdiction be changed to Bangalore, where the property is located?",
+        "citations": [
+          {"clause_id": "c-017", "quote": "subject to the exclusive jurisdiction of the courts in Delhi"}
+        ],
+        "confidence": 0.93
+      },
+      {
+        "clause_id": "c-004",
+        "category": "penalty",
+        "severity": "high",
+        "what_it_says": "In case of delay in payment beyond 7 days, penal interest at 2% per month on the outstanding amount.",
+        "what_it_means": "Late rent payments attract 2% monthly interest, which is 24% per year — well above typical bank lending rates.",
+        "why_it_matters": "A 24% annual rate is steep. Even a short delay could result in significant extra charges.",
+        "question_to_ask": "Can the penal interest be reduced to 1% per month or a flat late fee?",
+        "citations": [
+          {"clause_id": "c-004", "quote": "penal interest at the rate of 2% per month on the outstanding amount"}
+        ],
+        "confidence": 0.90
+      }
+    ]
+  }
+}
