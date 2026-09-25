@@ -2,6 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CitationChip, ReadAloudButton } from '../../components';
 import { useSSE } from '../../lib/sse';
+import { api } from '../../lib/api';
+import { useSessionStore } from '../../stores/sessionStore';
+import { useSettingsStore } from '../../stores/settingsStore';
 
 interface Message {
   id: string;
@@ -22,15 +25,47 @@ export function AskPage() {
     }
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const { events, isStreaming } = useSSE();
+  
+  const { sessionId, docId } = useSessionStore();
+  const outputLanguage = useSettingsStore(state => state.outputLanguage);
+  const { events, error, isStreaming, startStream } = useSSE();
+  
+  const currentAssistentMsgId = useRef<string | null>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, events]);
 
+  // Process SSE events for Q&A
+  useEffect(() => {
+    if (events.length === 0 || !currentAssistentMsgId.current) return;
+    const lastEvent = events[events.length - 1];
+    
+    if (lastEvent.event === 'segment') {
+      const seg = lastEvent.data;
+      const citations = seg.citations?.map((c: any) => c.clause_id) || [];
+      
+      setMessages(prev => prev.map(m => 
+        m.id === currentAssistentMsgId.current 
+          ? { 
+              ...m, 
+              content: m.content + (seg.text || ''),
+              citations: Array.from(new Set([...(m.citations || []), ...citations]))
+            } 
+          : m
+      ));
+    } else if (lastEvent.event === 'abstain') {
+      setMessages(prev => prev.map(m => 
+        m.id === currentAssistentMsgId.current 
+          ? { ...m, isAbstention: true } 
+          : m
+      ));
+    }
+  }, [events]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isStreaming) return;
+    if (!input.trim() || isStreaming || !docId || !sessionId) return;
     
     const userMsg: Message = { id: Date.now().toString(), role: 'user', content: input };
     setMessages(prev => [...prev, userMsg]);
@@ -38,39 +73,20 @@ export function AskPage() {
     
     // Create placeholder for assistant response
     const asstMsgId = (Date.now() + 1).toString();
+    currentAssistentMsgId.current = asstMsgId;
     setMessages(prev => [...prev, { id: asstMsgId, role: 'assistant', content: '' }]);
 
-    // Trigger SSE (simulated endpoint or actual if backend is running)
-    // await startStream('/v1/chat', { question: input }, { 'X-Session-Id': sessionId || '' });
-    
-    // For demo/UI completeness, simulate streaming
-    simulateStreaming(asstMsgId, input);
-  };
-
-  const simulateStreaming = (msgId: string, q: string) => {
-    const isAbstention = q.toLowerCase().includes('who is the president');
-    let content = isAbstention 
-      ? 'The document does not provide information about that.' 
-      : 'Based on the document, this is the answer to your question. ';
-      
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < content.length) {
-        setMessages(prev => prev.map(m => 
-          m.id === msgId ? { ...m, content: m.content + content[i] } : m
-        ));
-        i++;
-      } else {
-        clearInterval(interval);
-        setMessages(prev => prev.map(m => 
-          m.id === msgId ? { 
-            ...m, 
-            isAbstention, 
-            citations: isAbstention ? [] : ['4.1', '5.2']
-          } : m
-        ));
-      }
-    }, 20);
+    try {
+      startStream(
+        api.qaURL(docId), 
+        { question: userMsg.content, language: outputLanguage }, 
+        { 'X-Session-Id': sessionId }
+      );
+    } catch (err) {
+      setMessages(prev => prev.map(m => 
+        m.id === asstMsgId ? { ...m, content: 'Backend not available. Start the backend with `make dev` to enable AI-powered Q&A.' } : m
+      ));
+    }
   };
 
   const suggestions = [
@@ -82,6 +98,12 @@ export function AskPage() {
   return (
     <div className="flex flex-col h-full bg-white">
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        {error && (
+          <div className="bg-red-50 text-red-600 p-3 rounded text-sm text-center">
+            Failed to connect to backend: {error.message}
+          </div>
+        )}
+        
         {messages.map((msg) => (
           <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[80%] rounded-2xl px-5 py-3 ${
@@ -98,7 +120,7 @@ export function AskPage() {
               
               <div className="text-[15px] leading-relaxed whitespace-pre-wrap">
                 {msg.content}
-                {msg.role === 'assistant' && isStreaming && msg.id === messages[messages.length-1].id && (
+                {msg.role === 'assistant' && isStreaming && msg.id === currentAssistentMsgId.current && (
                   <span className="inline-block w-2 h-4 ml-1 bg-brand animate-pulse"></span>
                 )}
               </div>
@@ -151,7 +173,7 @@ export function AskPage() {
           />
           <button 
             type="submit"
-            disabled={!input.trim() || isStreaming}
+            disabled={!input.trim() || isStreaming || !docId || !sessionId}
             className="bg-brand text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2 disabled:opacity-50"
             aria-label="Send message"
           >

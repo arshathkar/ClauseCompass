@@ -15,30 +15,13 @@ export function ResultsPage() {
 
   const [selectedClause, setSelectedClause] = useState<any>(null);
 
-  const urgency = {
-    deadline: '27 Sep 2026',
-    reason: 'This notice requires you to vacate the premises by the stated deadline or face legal action.',
-    resources: [{ name: 'Tenant Rights Association', url: '#' }]
-  };
+  const urgency = document?.urgency;
+  const findings = document?.findings || [];
+  const keyFacts = document?.keyFacts || [];
 
-  const sampleFindings = [
-    {
-      id: 'f1', clauseId: '5.2', severity: 'High' as const, category: 'Deposit', 
-      whatItSays: 'The landlord can keep the deposit for any wear and tear.',
-      whatItMeans: 'You might not get your money back even if you take good care of the place.',
-      whyItMatters: 'Standard leases only allow deductions for actual damages, not normal wear.',
-      questionToAsk: 'Can we specify that standard wear and tear is exempt from deductions?',
-      needsReview: true,
-      sourceText: 'The Licensor shall be entitled to deduct from the Security Deposit any amounts for wear and tear...'
-    },
-    {
-      id: 'f2', clauseId: '4.1', severity: 'High' as const, category: 'Termination', 
-      whatItSays: 'The agreement can be terminated without cause at any time.',
-      whatItMeans: 'You could be forced to move out with no notice.',
-      whyItMatters: 'This provides zero housing security.',
-      sourceText: 'The Licensor may terminate this Agreement at any time without assigning any reason.'
-    }
-  ];
+  const highCount = findings.filter(f => f.severity === 'High').length;
+  const medCount = findings.filter(f => f.severity === 'Medium').length;
+  const lowCount = findings.filter(f => f.severity === 'Low').length;
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -50,22 +33,30 @@ export function ResultsPage() {
                 Key Facts
               </div>
               <div className="p-0">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <tbody className="bg-white divide-y divide-gray-100">
-                    <tr><td className="px-5 py-3 whitespace-nowrap text-sm font-medium text-gray-500 w-1/3">Rent</td><td className="px-5 py-3 text-sm font-bold text-gray-900 w-1/3">₹25,000 / month</td><td className="px-5 py-3 text-right"><CitationChip clauseId="2.1" onClick={() => {}} /></td></tr>
-                    <tr><td className="px-5 py-3 whitespace-nowrap text-sm font-medium text-gray-500">Deposit</td><td className="px-5 py-3 text-sm font-bold text-gray-900">₹75,000</td><td className="px-5 py-3 text-right"><CitationChip clauseId="5.2" onClick={() => {}} /></td></tr>
-                    <tr><td className="px-5 py-3 whitespace-nowrap text-sm font-medium text-gray-500">Lock-in</td><td className="px-5 py-3 text-sm font-bold text-gray-900">11 months</td><td className="px-5 py-3 text-right"><CitationChip clauseId="3.4" onClick={() => {}} /></td></tr>
-                  </tbody>
-                </table>
+                {keyFacts.length > 0 ? (
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <tbody className="bg-white divide-y divide-gray-100">
+                      {keyFacts.map((fact, i) => (
+                        <tr key={i}>
+                          <td className="px-5 py-3 whitespace-nowrap text-sm font-medium text-gray-500 w-1/3">{fact.label}</td>
+                          <td className="px-5 py-3 text-sm font-bold text-gray-900 w-1/3">{fact.value}</td>
+                          <td className="px-5 py-3 text-right">
+                            {fact.sourceId && <CitationChip clauseId={fact.sourceId} onClick={() => {}} />}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : (
+                  <div className="p-5 text-sm text-gray-500 italic">No key facts extracted yet...</div>
+                )}
               </div>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
               <h3 className="font-bold text-gray-900 mb-3">Summary</h3>
               <p className="text-gray-700 leading-relaxed">
-                This is a standard leave and licence agreement for 11 months. You are required to pay a security deposit of ₹75,000. 
-                There are significant risks regarding the termination clause and deposit deductions. 
-                Read the Risks tab for more details.
+                {document?.summary || "Analysis in progress..."}
               </p>
             </div>
           </div>
@@ -76,14 +67,14 @@ export function ResultsPage() {
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 flex items-center justify-between">
               <span className="font-bold text-gray-900">Risk Radar</span>
               <div className="flex gap-3 text-sm">
-                <SeverityBadge severity="High" /> <span className="font-medium">2</span>
-                <SeverityBadge severity="Medium" /> <span className="font-medium">3</span>
-                <SeverityBadge severity="Low" /> <span className="font-medium">2</span>
+                <SeverityBadge severity="High" /> <span className="font-medium">{highCount}</span>
+                <SeverityBadge severity="Medium" /> <span className="font-medium">{medCount}</span>
+                <SeverityBadge severity="Low" /> <span className="font-medium">{lowCount}</span>
               </div>
             </div>
             
             <div className="space-y-3">
-              {sampleFindings.map(f => (
+              {findings.length > 0 ? findings.map(f => (
                 <button 
                   key={f.id}
                   onClick={() => setSelectedClause(f)}
@@ -99,7 +90,9 @@ export function ResultsPage() {
                   <div className="text-sm font-mono text-gray-400 font-medium">§{f.clauseId}</div>
                   <div className="text-brand">→</div>
                 </button>
-              ))}
+              )) : (
+                <div className="text-center p-8 text-gray-500 italic">Scanning for risks...</div>
+              )}
             </div>
           </div>
         );
